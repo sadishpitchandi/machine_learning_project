@@ -61,11 +61,11 @@ we can DD THE FILE "venv enviorement " in gitigonre
    commit is create the version 
    "git log " to see previous version 
 
-   
+   "git pull" pull the files
 
    to create version?commit all changes by git 
    "
-   git commit -m"message"
+   git commit -m "message"
 
 
    to see  version /changes to github 
@@ -74,3 +74,45 @@ we can DD THE FILE "venv enviorement " in gitigonre
    git push origin main 
    "
    origin is URL   remote the url  use4 code git remote -v
+
+
+
+   to create the heruko app
+
+   1. heruko key=c2047bba-ff21-46d3-a071-f7dd811ed1fa   profile  scroll down key is avaible 
+   2. app name =mlfirstproject123
+
+
+   create the Docker file 
+
+   gunicorn  is reuirement for dockeer 
+
+   to crearte the doc igonore   venv/ is remove
+
+
+  '   docker build -t ml-project:latest .    '''
+
+    to see load image we use 
+    ''''   docker image'''
+
+    to run the docker image 
+
+    """   docker run -p 5000:5000 -e PORT=5000 docker key """
+
+e port =enivorment vartiable  
+
+
+to stop the image 
+ " docker stop image id "
+to check the running container 
+
+" docker ps
+
+
+
+
+git init
+git pull 
+git add .
+git commit -m "first ml prpoject"
+git push origin main 
