@@ -131,3 +131,15 @@ value : apjsadish2706@gmail.com
  add bew repo
  name :HEROKU_APP_NAME
  value ; mlfirstproject123
+
+
+
+
+
+
+ question 
+        1.'docker' is not recognized as an internal or external command,
+         operable program or batch file.
+         2. explaination of main.yml
+         3.github  aqction tab  set up a workflow yourself 
+         4.heroku open app is not working
