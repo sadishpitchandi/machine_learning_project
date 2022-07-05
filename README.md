@@ -116,3 +116,18 @@ git pull
 git add .
 git commit -m "first ml prpoject"
 git push origin main 
+
+create the folder '.github' in right click create thwe folder workflow create the one filesd  'main.yaml'
+
+
+add the secret  
+create the duplicate of github 
+go to setting ad click the secret and go to actions and click new respo
+name : 'HEROKU_EMAIL'
+value : apjsadish2706@gmail.com
+ add the new respo
+ name " HEROKU_API_KEY
+ vvalue : c2047bba-ff21-46d3-a071-f7dd811ed1fa 
+ add bew repo
+ name :HEROKU_APP_NAME
+ value ; mlfirstproject123
