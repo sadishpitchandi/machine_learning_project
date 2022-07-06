@@ -1,5 +1,8 @@
 # machine_learning_project
 
+from xml.dom import pulldom
+
+
 my first ML project 4/7/2022
 
 git account : https://github.com/sadishpitchandi/machine_learning_project
@@ -80,7 +83,7 @@ we can DD THE FILE "venv enviorement " in gitigonre
    to create the heruko app
 
    1. heruko key=c2047bba-ff21-46d3-a071-f7dd811ed1fa   profile  scroll down key is avaible 
-   2. app name =mlfirstproject123
+   2. app name =pulldomgh
 
 
    create the Docker file 
