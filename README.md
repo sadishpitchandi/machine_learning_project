@@ -157,6 +157,63 @@ write the code in saetup.py files
 terimanal  "python steup.py install"
 
 
+this not work properly in window use lumius
+
+use "pip install -r requirements.txt" when you -e . is put in the requiremets.txt files.
+
+
+"pip install -e ."
+
+-e . =   we install the particular folder HOUSING  alos   dot me3ans the current directory search the current directory
+
+first create folder inside the housing 
+1.exception
+2.logger
+3.pipeline      create file in  folder inside the
+4.component       __init__.py file
+5.config
+6.entity
+
+
+first we work with  
+1.logger  =  when we write the code we get the error, to tracke all the progress to check the status ,progess, what is happen we check in logger
+
+once complete the loging go to app.py and 'from housing.loggerimport logging'
+logging.info(" we are testing the logging moudle ")
+and it will catch the log in housing folder its new created
+more files avaible we tracke what is happening 
+
+next we go with excepation
+
+2. exception= we may get the error, excepaional events is occuring how we handling 
+
+once completed  app.py
+
+from housing.exception import HousingException
+import sys
+
+try:
+          raise Exception(" we are testing custom Exception")
+     except Exception as e:
+          housing=HousingException(e,sys)
+          logging.info(housing.error_message)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -164,8 +221,10 @@ terimanal  "python steup.py install"
 
 
  question 
-        1.'docker' is not recognized as an internal or external command,
+        1.'docker' is not recognized as an internal or external command,   docker image    docker run -p 5000:5000 -e PORT=5000 docker key 
          operable program or batch file.
          2. explaination of main.yml
          3.heroku open app is not working
          4.interpretor path is not found
+         5. list is using the setup.py files y not truples
+         6.log cannot be catch in the file
