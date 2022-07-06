@@ -133,6 +133,32 @@ value : apjsadish2706@gmail.com
  value ; mlfirstproject123
 
 
+create the folder has  "housing"
+creat the file 'setup.py'  outside from the housing floder  steup file is like requirements.txt file we use 
+pip install -r requirements.txt instead of we use donot isuse that we want to wwrite the code in setup we use python setup.py install
+
+
+to set the interpretor  use the command  'ctrl+shift+x' tp add the python microsoft
+down python base conda envirment 
+add the interpretor
+
+
+first housing folder crete the filres '__init__.py' its python module or python packeges 
+hosing is libraues
+
+
+requirements.txt
+sklearn
+pandas
+numpy
+
+write the code in saetup.py files
+
+terimanal  "python steup.py install"
+
+
+
+
 
 
 
@@ -141,5 +167,5 @@ value : apjsadish2706@gmail.com
         1.'docker' is not recognized as an internal or external command,
          operable program or batch file.
          2. explaination of main.yml
-         3.github  aqction tab  set up a workflow yourself 
-         4.heroku open app is not working
+         3.heroku open app is not working
+         4.interpretor path is not found
