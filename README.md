@@ -1,6 +1,15 @@
 # machine_learning_project
 
+from asyncore import file_dispatcher
+from ctypes import Structure
+from importlib.metadata import files
+from importlib.resources import path
+from msilib.schema import Component
+from tkinter.tix import COLUMN
+from typing import KeysView
 from xml.dom import pulldom
+
+from sklearn import pipeline
 
 
 my first ML project 4/7/2022
@@ -201,33 +210,168 @@ try:
           housing=HousingException(e,sys)
           logging.info(housing.error_message)
 
+and terminate  "python app.py"
 
 
+3. entity =  we defoine the mutple Structure  like configuration of pipeline amd output this pipeline will produce thouse output we call it has artifact/
+             output of machience learning Component  first we define the variable like url it help to read the .yaml filr(stoage file)
+
+  in entity folfer we creae the new file  "config_entity"-> configuration information
+     ( some want to know the datainGEITIONCONFIG info that time we go to config_entity )
+   ( we give all the information for data ingestion,valition,transformatiom,... ) satyructure of asll the components
+and sepecify the all configuration information in that above file
+
+create the notebook floder  and create the example files (example1.ipynb)
+pip install ipykernel
 
 
+datainGEITIONCONFIG= INFORMATION OF SOURCE DATA
+nametuples= (a=34,v=6,r=67) we metion sny name in tuples is called named turples. ITr take two parameters  names and list/ it should be permanent cvan not change in between and we want to change we go with dict
+dataIngetionconfig is named turples(turples is store the info) to sotrage the info
+
+data download url is source of data 
+tgz-DOWNLOAD_DIR is location where the data is tto be located. tgz is compressed file 
+raw_data_dir= extract the file (tgz)
+ingested_train_dir= train data set folder
+ingested_test_dir=test dataset folder
 
 
+DataValidationConfig = namedtuple("DataValidationConfig",["schema_file_path"])
+schemafilepath is no of COLUMN Aand datatypes it want create one file that contain (no of COLUMN Aand datatypes) and path is mention in above 
 
 
+DataTransformationConfig = namedtuple(" DataTransformationConfig",["add_bedroom_per_room",
+                                                        "treansformed_train_dir",
+                                                        "transformed_test_dir",
+                                                        "preprocessed_object_file_path"])
+add_bedroom_per_room= new COLUMN
+preprocessed_object_file_path= we want to create the pickle file(we do all the feasture engennering steps) ,this file located location is file_path
+treansformed_train_dir=when we data set we apply the preprocessed  we can tranformat the dfataset and we store that path in treansformed_train_dir
 
 
+ModelTrainerConfig = namedtuple("ModelTrainerConfig",["trained_model_file_path","base_accuracy"])
+
+onece model is trained we want to expose or ssave in pickle file that path is trauined model file path
+base accxuary is we train the model it give best better the older one we except it not not give in that base accacury we reject 
+hyposis coming in picture
+
+ModelEvaluationConfig = namedtuple("ModelEvaluationConfig", ["model_evaluation_file_path","time_stamp"])
+we test data for  model evalution 
+we keeq the infor for our model  of all exisdt model has we train a new model 
+and we comapre the best model all ready in production  that model is trained  and compare with these two model in model evalution 
+alrewady in production model older data set = model_evaluation file path 
 
 
+ModelPusherConfig = namedtuple("ModelPusherConfig",["export_dir_path "])
+wqe campre the above model is gicveuing the best accuracvy we want push in production replached with older model 
+to export thee new data in export file path 
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+we want to read the information like url....
+
+we can storage these information in file or database (file.yaml file)
+creqate the .yml file and storage all the information in yaml amd read those info and create the objective of all the components
+
+  
+
+  create the folder config
+to create the yaml file  and storage that config yaml file in config folder 
+and create the file config.yaml file
+
+we give the location of data and we directoruy of that path
+
+we can read these inforamtion(config.yaml file)  througgh CODE AND WE ACCESS THESE FILE IN ENTITYS
+
+*** config folder we can utilise this (config_entity) and this (config.yaml file) and finally we give the configuraion through the piepleine
+***confiraution means above = housing folder inside the config we write code for config entity and config.yaml file congiuration
+create the file in hosuing folder inside config inside the neww file like configuration.py
+
+in config ionside configuation.oy 
+create one class like configuration 
+def the function as init and define all compoent like 
+   def get_data_transformation_config(self):
+        pass
+
+  get_data_transformation_config return we want to mention 
+  return is from get_data_transformation_config is function output i/return the enity 
+
+  from housing.entity.config_entity import DataIngestionConfig
+  we want to extract this prativcular (config_entity.py )
+
+  def get_data_ingestion_config(self)->DataIngestionConfig:
+        pass
+
+      get_data_ingestion_config this particvular function .. return this DataIngestionConfig entity its present in config_entity 
+ 
+
+ how can i read the file from the config.yaml files and i can cxreate of objectiuve or i can create the nameturple of DataIngestionConfig and return information #dopubt    
 
 
+ we want to use the yml so we want to install the pyYAML in requirements
+
+ import yaml  
+ import os 
+ os.getcwd() we can check the directory of current folder 
+ 'd:\\Project\\machine_learning_project\\notebook' we setect the partichalur 'd:\\Project\\machine_learning_projec\
+  os.chdir("d:\\Project\\machine_learning_project")  we want to change the directory
+   check again the path 
+   os.getcwd()
+   os.list(". ") that point to cuurent  directory
+   os.list("config")
+
+   config_file_path=os.path.join("config","config.yaml")  we join the path 
 
 
+   to read the yml file 
+    
+    config_info=None                # variable emty 
+    with open(config_file_path,"rb") as yaml_file:    # we open the yaml_file we mention path and we put the read mode 
+    config_info=yaml.safe_load(yaml_file)             #we can save the file in save_load means saving the file in ymlfile
+            yaml is libarry   safeload is function and yaml_file is object 
+
+    config_info  is the dict format 
+
+    # we define the function as readyaml files 
+
+    def read_yaml_file(file_path:str)->dict:
+    """
+    Reads a YAML file and returns the contents as a dictionary.
+    file_path: str
+    """
+    try:
+        with open(file_path, 'rb') as yaml_file:
+            return yaml.safe_load(yaml_file)
+    except Exception as e:
+        raise e
+
+    config =read_yaml_file(config_file_path)   
+    its variable   function       config file path we that we use to yml file aviab;e at current directory 
 
 
+    in housing folder 
 
+    ** create the folder  util (helping file  to function to read the yaml files) in util folder create the file as util.py in that create the file as __init__.py
 
+    in hoiusling folder confighuration.py files  we want to mention the 
+      
+      from housing.util.util import read_yaml_file  we want to read the yaml file in configuration.py file 
 
+      we waNt to create the folder in housing 
+      as constant and in that create the file has __init__.py
+      constant  we declare the hard conded    we new one folder and declare all the constant its shpould be modelisaed.
 
- question 
-        1.'docker' is not recognized as an internal or external command,   docker image    docker run -p 5000:5000 -e PORT=5000 docker key 
-         operable program or batch file.
-         2. explaination of main.yml
-         3.heroku open app is not working
-         4.interpretor path is not found
-         5. list is using the setup.py files y not truples
-         6.log cannot be catch in the file
+      we mention it root dir 
+      time stamp 
+       we the all the compoent key 
+       using config.yaml right we take it and put all the Keys
+
+TRAINING_PIPELINE_CONFIG_KEY = "training_pipeline_config"
+ TRAINING_PIPELINE_ARTIFACT_DIR_KEY = "artifact_dir"
+ TRAINING_PIPELINE_NAME_KEY = "pipeline_name"
+
+ go congiuration folder 
+
+ def get traing puiepline 
+   1.extract the specific value in the dict (confic.info)
+   2.use the path its the output(artifact) and mergeing those path like ROOT DIR(mlproject) ---HOUSING IS PIPEL NAME------ ARTIFACT IS PIPLELINE ARTIFACT KEY
+   3.call the trainingpipleine=artifict(pand its path)  we get ouput 

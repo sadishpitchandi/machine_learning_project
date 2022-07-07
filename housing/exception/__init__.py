@@ -28,10 +28,10 @@ class HousingException(Exception):
         """
         return error_message
 
-    def __str__(self):
+    def __str__(self):  # string object whenever we print the hopusing  ecxecption object  it will print the error messesge
         return self.error_message
 
 
-    def __repr__(self) -> str:
+    def __repr__(self) -> str:   # its object representation    d=demo, we put d we get the repr function   we put print(d) we get str function 
         return HousingException.__name__.str()
 
