@@ -375,3 +375,34 @@ TRAINING_PIPELINE_CONFIG_KEY = "training_pipeline_config"
    1.extract the specific value in the dict (confic.info)
    2.use the path its the output(artifact) and mergeing those path like ROOT DIR(mlproject) ---HOUSING IS PIPEL NAME------ ARTIFACT IS PIPLELINE ARTIFACT KEY
    3.call the trainingpipleine=artifict(pand its path)  we get ouput 
+
+   next we go with get data igination config function 
+
+   we write code l;ike  use the dict.path and url ,dir,test,train all the emements 
+
+
+   same we declre all the function that avaiavble in compoents
+
+  ===================================================================================================
+
+  now we goo for component folder 
+
+  data ingection.py file data_validation.py file ,data_transformation,model_evaluation.py,model_pusher.py,model_trainer.py
+
+  go with data ingection .py file and tyope the code.
+
+
+  in hosuimg ->entity ->new file as artifact_entity.py
+
+  its oouput of compoents
+
+  input is config_entuity
+
+
+  and write the code in compoent has  dataingestion.py file 
+  give the function as dowloand the dataset,extraxt the dataset,split the datase4t
+
+
+  url="............"
+  import os 
+  os.path.basename(url)  we can extract the base url hosuing.tgz
