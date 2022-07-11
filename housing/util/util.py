@@ -4,7 +4,8 @@
  
 
 def read_yaml_file(file_path:str)->dict:
-   
+   """  its use to yaml file is there it read in sasfe load its just open 
+        and the yaml and convwert into the dict """
     
     
     try:

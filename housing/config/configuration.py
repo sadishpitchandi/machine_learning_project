@@ -11,12 +11,18 @@ from housing.exception import HousingException
 
 
 class Configuartion:
+     ''' when we insitise the new obvject ( Like configuration().get_data-validation)
+        first it call the init fuction as first '''
+
+
+
+
     def __init__(self
         config_file_path:Str = CONFIG_FILE_PATH ,   # READ THE  config path and go that config folder and read the config fdile
         current_time_stamp:str = CURRENT_TIME_STAMP
      )->None:
      try:
-        self.config_info = read_yaml_file(file_path=CONFIG_FILE_PATH)
+        self.config_info = read_yaml_file(file_path=CONFIG_FILE_PATH)    # CONFIG INFO IS  totsal file util.py (its contain .yaml file in dict format) if we call the config info=it show the dict of all the .yaml files loades  (.yaml file conatin the information (xconfig.yaml files))
         self.training_pipeline_config = self.get_training_pipeline_config()   
         self.time_stamp = current_time_stamp
     except Exceptionas e:
@@ -68,35 +74,36 @@ class Configuartion:
             return data_ingestion_config
         except Exception as e:
             raise HousingException(e,sys) from e
-        
-    def get_data_validation_config(self)-> DataValidationConfig:
+#data validatio         
+    def get_data_validation_config(self)-> DataValidationConfig:   #DataValidationConfig it go the entity folder 
         try:
-            artifact_dir = self.training_pipeline_config.artifact_dir
+            artifact_dir = self.training_pipeline_config.artifact_dir  # it give the root directory like housing??artifact 
 
-            data_validation_artifact_dir=os.path.join(
-                artifact_dir,
-                DATA_VALIDATION_ARTIFACT_DIR_NAME,
-                self.time_stamp
+            data_validation_artifact_dir=os.path.join(   # we create the validatgion artifaact dir is the folder how it create with help of
+                artifact_dir,             # root dir 
+                DATA_VALIDATION_ARTIFACT_DIR_NAME,   #its key inside  data validation is there so  we call the key it produce the data validation folder in artifacte folder 
+                self.time_stamp                       #it produce the time stamp of it 
             )
-            data_validation_config = self.config_info[DATA_VALIDATION_CONFIG_KEY]
+            data_validation_config = self.config_info[DATA_VALIDATION_CONFIG_KEY]  # first we do the scheme file path so we want extract the information on "enity.yaml "   self.config_info[DATA_VALIDATION_CONFIG_KEY] when call this we can get the all the scheme dir:config,scheme file name : scheme.yaml file
 
 
-            schema_file_path = os.path.join(ROOT_DIR,
-            data_validation_config[DATA_VALIDATION_SCHEMA_DIR_KEY],
-            data_validation_config[DATA_VALIDATION_SCHEMA_FILE_NAME_KEY]
+
+            schema_file_path = os.path.join(ROOT_DIR,                        #we want the schem,e file path so we want to root dir , config and scheme .yaml file path 
+            data_validation_config[DATA_VALIDATION_SCHEMA_DIR_KEY],         #WE EXTRACT IT FROM THE ABoVE DICT and it mentioned and we extract with key of the dict  .(DATA_VALIDATION_CONFIG_KEY]) with help of constant file we use the wscheme kleys and get config folder 
+            data_validation_config[DATA_VALIDATION_SCHEMA_FILE_NAME_KEY]      # with help of the constant file the key and we the scheme file  has scheme.yaml 
             )
 
-            report_file_path = os.path.join(data_validation_artifact_dir,
-            data_validation_config[DATA_VALIDATION_REPORT_FILE_NAME_KEY]
+            report_file_path = os.path.join(data_validation_artifact_dir,     #we want to find the record path so  final report path is used in  that artificat dir inside data validation inside the report file its show json   
+            data_validation_config[DATA_VALIDATION_REPORT_FILE_NAME_KEY]     # datavalidation config(confiog.yaml) we can call it file name has key used in the constant 
             )
 
             report_page_file_path = os.path.join(data_validation_artifact_dir,
-            data_validation_config[DATA_VALIDATION_REPORT_PAGE_FILE_NAME_KEY]
+            data_validation_config[DATA_VALIDATION_REPORT_PAGE_FILE_NAME_KEY]    #same approch 
 
             )
 
-            data_validation_config = DataValidationConfig(
-                schema_file_path=schema_file_path,
+            data_validation_config = DataValidationConfig(     # finaal of the3 data validation   we get scheme file path 
+                schema_file_path=schema_file_path,                    # above the variable mention in valkidation config the fianl function 
                 report_file_path=report_file_path,
                 report_page_file_path=report_page_file_path,
             )
@@ -218,12 +225,12 @@ class Configuartion:
     def get_training_pipeline_config(self) ->TrainingPipelineConfig:
         try:
             training_pipeline_config = self.config_info[TRAINING_PIPELINE_CONFIG_KEY]  # TRAINING_PIPELINE_CONFIG_KEYgive this infomration training_pipeline_config  .....config_info[TRAINING_PIPELINE_CONFIG_KEY] give the {pip[leine name: housing ,,artifact_dir=artyifact]}
-            artifact_dir = os.path.join(ROOT_DIR,
-            training_pipeline_config[TRAINING_PIPELINE_NAME_KEY],
+            artifact_dir = os.path.join(ROOT_DIR,               #root dir  d:project: machi8en leARNING
+            training_pipeline_config[TRAINING_PIPELINE_NAME_KEY],                   # IT CONFIG.YAML FILE PIPLEINE NAME =HPOUSING 
             training_pipeline_config[TRAINING_PIPELINE_ARTIFACT_DIR_KEY]
             )  #IT CAN CHOOSE THE PATH IN ARTIFACT DIR .. ROOT DIR(mlproject) ---HOUSING IS PIPEL NAME------ ARTIFACT IS PIPLELINE ARTIFACT KEY
             training_pipleine_config = TrainingPipelineConfig(artifact_dir=artifact_dir) #ouput it show like trainingpiplineconfig(artifact_dir= path)
-            logging.info(f"Training pipeline config :{training_pipeline_config}")
+            logging.info(f"Training pipeline config :{training_pipeline_config}")        #CONFIG ITS CARE ONLY ONE DIR ITS PIPLEINE OUTPUT 
             return training_pipeline_config
         except Exception as e:
             raise HousingException(e,sys) from e

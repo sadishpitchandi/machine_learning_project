@@ -399,10 +399,57 @@ TRAINING_PIPELINE_CONFIG_KEY = "training_pipeline_config"
   input is config_entuity
 
 
-  and write the code in compoent has  dataingestion.py file 
+  and write the code in compoent has            dataingestion.py file 
   give the function as dowloand the dataset,extraxt the dataset,split the datase4t
 
 
   url="............"
   import os 
   os.path.basename(url)  we can extract the base url hosuing.tgz
+
+  housing the comp[omenyt and data ingenition ]
+  write the code 
+  defiune the fucntion of tgz file and split the file
+
+  and go to hpousing the pipeline.py 
+
+
+  and write the code 
+  ===============================================================================
+  
+create the file demo.py in outer file  (read the pipeline )
+
+run the python demo.py in the terminate we get the new foldeer that are crearte  path is housing artyifact fdir inm that time stampis cxreate and 3 type of folder is the ouput 
+
+================================================================================
+
+#data validation.
+
+
+
+firsdt create the outside  "scheme.yaml" file on it it repont the col and its dataypes
+
+create schem file 
+next go to constant do the keys that are in config.yaml 
+
+decalre the key 
+
+next go configuration.py file 
+
+====================================================================================
+                                housing 
+  1. root directory            2. constant              3. config             4. compound                5. pipeline     
+     folder 
+
+
+
+     config.yaml               constant file           configuration.py          data                     pipeline
+                                                                               validation
+                                                                               data_tranforamation
+
+                                                     entity.py 
+                                                     use in the configuration file.
+===============================================================================================
+
+
+data validation 
